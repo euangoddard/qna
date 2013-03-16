@@ -26,7 +26,7 @@
           <h3>Questions</h3>
           <ul ng-show="questions.length">
             <li ng-repeat="question in questions">
-              <a href="/#{{ question._id.$oid }}">{{ question.question }}</a>
+              <a href="#/{{ question._id.$oid }}">{{ question.question }}</a>
             </li>
           </ul>
           <p ng-hide="questions.length" class="muted">No questions yet</p>
