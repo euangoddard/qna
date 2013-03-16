@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>QnA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="css/bootstrap-responsive.min.css"/>
+</head>
+<body ng-app="qna">
+  <div class="container">
+    <div class="row">
+      <div class="span12 page-header" ng-controller="UpdatesController">
+        <div class="alert alert-info pull-right" ng-show="questions">
+          <strong>New activity in:</strong>
+          <a href="#/{{ questions[0]._id.$oid }}">
+            {{ questions[0].question }}
+          </a>
+        </div>
+        <h1>QnA <small>real-time questions and answers</small></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span4" ng-controller="AllQuestionsController">
+        <div class="well">
+          <h3>Questions</h3>
+          <ul ng-show="questions.length">
+            <li ng-repeat="question in questions">
+              <a href="/#{{ question._id.$oid }}">{{ question.question }}</a>
+            </li>
+          </ul>
+          <p ng-hide="questions.length" class="muted">No questions yet</p>
+          <a href="#/" class="btn btn-success">Ask a question</a>
+        </div>
+      </div>
+      <div class="span8" ng-view></div>
+    </div>
+  </div>
+
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-resource.js"></script>
+  <script src="lib/crypto/core.js"></script>
+  <script src="lib/crypto/md5.js"></script>
+  <script src="js/backend.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

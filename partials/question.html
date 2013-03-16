@@ -1,0 +1,62 @@
+<h2>{{ question.question }}</h2>
+<div class="media">
+  <a class="pull-left" href="mailto:{{question.email}}">
+    <avatar email="{{ question.email }}"></avatar>
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading">
+      {{ question.email }} <small>{{ question.timestamp|date:'medium' }}</small>
+    </h4>
+    {{ question.question }}
+    <div class="media" ng-repeat="answer in question.answers">
+      <a class="pull-left" href="mailto:{{ answer.email }}">
+        <avatar email="{{ answer.email }}"></avatar>
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading">
+          {{ answer.email }}
+          <small>{{ answer.timestamp|date:'medium' }}</small>
+        </h4>
+        {{ answer.answer }}
+      </div>
+  </div>
+  
+</div>
+<h3>Answer the question</h3>
+<form class="form-horizontal" name="answer_form" ng-submit="answer_question()">
+  <div class="control-group">
+    <label class="control-label" for="inputEmail">Email</label>
+    <div class="controls">
+      <input
+        type="email"
+        ng-model="answer.email"
+        id="inputEmail"
+        placeholder="email"
+        required
+      >
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputAnswer">Answer</label>
+    <div class="controls">
+      <textarea
+        ng-model="answer.answer"
+        id="inputAnswer"
+        placeholder="your answer to the question"
+        class="input-xlarge"
+        required
+      ></textarea>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        ng-disabled="answer_form.$invalid"
+      >
+        Answer question
+      </button>
+    </div>
+  </div>
+</form>
