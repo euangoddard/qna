@@ -4,7 +4,7 @@
     
     directives.directive('avatar', function () {
         var avatar_directive = {
-            template: '<img src="http://www.gravatar.com/avatar/{{ hash }}?s=64" alt="Image of {{ email }}" class="media-object">',
+            template: '<img src="http://www.gravatar.com/avatar/{{ hash }}?s=64&d=identicon" alt="Image of {{ email }}" class="media-object">',
             replace: true,
             restrict: 'E',
             scope: true,
